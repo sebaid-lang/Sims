@@ -44,7 +44,7 @@ jobs:
         with:
           solution-file: out/exported/${{ github.event.inputs.solution_name }}.zip
           solution-folder: out/src/${{ github.event.inputs.solution_name }}
-          solution-type: Both
+          solution-type: Unmanaged
 
       - name: Commit unpacked solution
         run: |
