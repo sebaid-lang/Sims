@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{49c30520-a58d-4966-9649-7d012537b88e}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{a5102dd0-1fc0-4faf-8c21-98f35db11057}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{2960769f-9d9b-4069-9182-a8bc4a8cb904}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{b33f3b86-4c3a-43c8-92d7-ef8239081bd3}">
+                        <labels>
+                          <label description="Forward Incident" languagecode="1033" />
+                        </labels>
+                        <control id="sims_forwardincident" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_forwardincident" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0b90ba2e-6ed7-4373-967f-9f34c00f7880}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d30cf52c-6969-4db7-9946-2a9d87f615e1}">
+                        <labels>
+                          <label description="Hover-Over" languagecode="1033" />
+                        </labels>
+                        <control id="sims_hoverover" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_hoverover" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

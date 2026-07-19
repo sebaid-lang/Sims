@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{dc41b9fa-963d-428f-90e6-efdd4ed05279}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{8634df86-6fb5-4be5-a5b6-43ebc7f6a98a}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{b7f54f45-1ae4-4721-ac0b-e8b4986668b9}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{83e9ff63-fdbf-4799-a730-aa6a4ca52203}">
+                        <labels>
+                          <label description="Incident_Id" languagecode="1033" />
+                        </labels>
+                        <control id="sims_incident_date" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_incident_date" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a2adddcb-fe6e-4ee9-bbc3-1dfb48627aad}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{16091a36-f361-4bd6-9d91-003af8f67204}">
+                        <labels>
+                          <label description="Reporting Date" languagecode="1033" />
+                        </labels>
+                        <control id="sims_reportingdate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="sims_reportingdate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8aef7ac6-550b-456c-b7b9-5ea32de648c5}">
+                        <labels>
+                          <label description="Risk Category" languagecode="1033" />
+                        </labels>
+                        <control id="sims_riskcategory" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_riskcategory" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{984fb98f-0ed2-4d2c-88f3-2544691eda06}">
+                        <labels>
+                          <label description="Threat Category" languagecode="1033" />
+                        </labels>
+                        <control id="sims_threatcategory" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_threatcategory" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d14db362-12dc-4e50-ba24-ee33f90204cd}">
+                        <labels>
+                          <label description="Incident Type" languagecode="1033" />
+                        </labels>
+                        <control id="sims_incidenttype" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_incidenttype" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6cd79510-5b72-4040-b198-d5a328529be8}">
+                        <labels>
+                          <label description="Field Office" languagecode="1033" />
+                        </labels>
+                        <control id="sims_fieldoffice" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_fieldoffice" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{906d59db-02e7-4ae1-82e8-b18c5a4df9ad}">
+                        <labels>
+                          <label description="Area" languagecode="1033" />
+                        </labels>
+                        <control id="sims_area" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_area" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

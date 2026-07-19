@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{05c6dcea-ef40-4514-a56a-69fa696d7cd0}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{0b824a6b-acfb-4385-a957-6c665d3a8b87}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{6324c4b4-b244-46ac-8dfa-7697f30a98eb}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{f892ac7f-f2f9-45c8-8144-70a2490b0856}">
+                        <labels>
+                          <label description="Action_Id" languagecode="1033" />
+                        </labels>
+                        <control id="sims_action_id" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_action_id" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ab942057-4eb5-416d-906f-628fbb2052e4}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3a7520e9-5f45-40a8-93b3-0d13072865fe}">
+                        <labels>
+                          <label description="DefaultAction" languagecode="1033" />
+                        </labels>
+                        <control id="sims_defaultaction" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="sims_defaultaction" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{086904b2-3754-4128-926c-2bf07bf8b145}">
+                        <labels>
+                          <label description="Checked" languagecode="1033" />
+                        </labels>
+                        <control id="sims_has_permission" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="sims_has_permission" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7f5573a1-667a-4ce0-bc92-d8f5a82fbaf9}">
+                        <labels>
+                          <label description="Action" languagecode="1033" />
+                        </labels>
+                        <control id="sims_action" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_action" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{076b7934-c321-463f-bb92-2abfcdf44a5f}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{A37D64AF-022B-406E-A026-AA6B025C2DAC}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{1C507D25-1DEC-4A63-AD7A-12DD5F1E1FDD}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{6834D168-9F44-413D-ADE7-BDA70BA47881}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="sims_id" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_Id" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1A0C10F4-C3EE-4F5B-A02F-9AA48891ED96}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{210d0e1e-501e-4450-bf74-9634f1463b18}">
+                        <labels>
+                          <label description="InstallationArea" languagecode="1033" />
+                        </labels>
+                        <control id="sims_installationarea" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_installationarea" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2b56bc61-6ece-4e8f-beef-a24dd34e1daf}">
+                        <labels>
+                          <label description="InstallationCode" languagecode="1033" />
+                        </labels>
+                        <control id="sims_installationcode" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_installationcode" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9d59ad47-aac0-4bc9-aab8-22eaf62f4887}">
+                        <labels>
+                          <label description="InstallationName" languagecode="1033" />
+                        </labels>
+                        <control id="sims_installationname" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_installationname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{97636524-a697-4321-b999-d907bae76691}">
+                        <labels>
+                          <label description="CCTV" languagecode="1033" />
+                        </labels>
+                        <control id="sims_cctv" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_cctv" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dd1b8dfd-e732-426d-94e8-cd8619934db8}">
+                        <labels>
+                          <label description="Guarding" languagecode="1033" />
+                        </labels>
+                        <control id="sims_guarding" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_guarding" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

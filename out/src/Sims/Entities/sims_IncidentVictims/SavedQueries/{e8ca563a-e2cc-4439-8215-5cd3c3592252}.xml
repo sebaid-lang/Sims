@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{e8ca563a-e2cc-4439-8215-5cd3c3592252}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_id" select="1" icon="1" preview="1">
+        <row name="result" id="sims_incidentvictimsid">
+          <cell name="sims_incident" width="100" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_incidentdate" width="171" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_incidenttypeother" width="212" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_streported" width="170" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_summary" width="154" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_thirdparty" width="163" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_riskcategory" width="180" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_threatcategory" width="191" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_modusoperandi" width="194" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_ongoing" width="154" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_criticalincident" width="191" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_guarding" width="152" />
+          <cell name="a_6e7034391ab54e428f515f4a440794d9.sims_recordtype" width="171" />
+          <cell name="sims_victimname" width="119" />
+          <cell name="sims_victimindexnumber" width="170" />
+          <cell name="sims_victimnamearabic" width="164" />
+          <cell name="sims_victim_type" width="107" />
+          <cell name="sims_impactother" width="116" />
+          <cell name="sims_impactonvictim" width="145" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_incidentvictims">
+          <attribute name="sims_incidentvictimsid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sims_incident" />
+          <link-entity alias="a_6e7034391ab54e428f515f4a440794d9" name="sims_incident" to="sims_incident" from="sims_incidentid" link-type="outer" visible="false">
+            <attribute name="sims_incidentdate" />
+            <attribute name="sims_incidenttypeother" />
+            <attribute name="sims_streported" />
+            <attribute name="sims_summary" />
+            <attribute name="sims_thirdparty" />
+            <attribute name="sims_riskcategory" />
+            <attribute name="sims_threatcategory" />
+            <attribute name="sims_modusoperandi" />
+            <attribute name="sims_ongoing" />
+            <attribute name="sims_criticalincident" />
+            <attribute name="sims_guarding" />
+            <attribute name="sims_recordtype" />
+          </link-entity>
+          <attribute name="sims_victimname" />
+          <attribute name="sims_victimindexnumber" />
+          <attribute name="sims_victimnamearabic" />
+          <attribute name="sims_victim_type" />
+          <attribute name="sims_impactother" />
+          <attribute name="sims_impactonvictim" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <roledisplayconditionsxml>
+      <DisplayConditions>
+        <Everyone />
+      </DisplayConditions>
+    </roledisplayconditionsxml>
+    <LocalizedNames>
+      <LocalizedName description="Active Incident Victims" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

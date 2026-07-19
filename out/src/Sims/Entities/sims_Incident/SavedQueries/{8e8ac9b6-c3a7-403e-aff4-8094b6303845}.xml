@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{8e8ac9b6-c3a7-403e-aff4-8094b6303845}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_incident_date" select="1" icon="1" preview="1">
+        <row name="result" id="sims_incidentid">
+          <cell name="sims_incident_date" width="300" />
+          <cell name="sims_reportingdate" width="150" />
+          <cell name="sims_riskcategory" width="150" />
+          <cell name="sims_threatcategory" width="150" />
+          <cell name="sims_incidenttype" width="150" />
+          <cell name="sims_fieldoffice" width="150" />
+          <cell name="sims_area" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_incident">
+          <attribute name="sims_incidentid" />
+          <attribute name="sims_incident_date" />
+          <attribute name="createdon" />
+          <order attribute="sims_incident_date" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sims_reportingdate" />
+          <attribute name="sims_riskcategory" />
+          <attribute name="sims_threatcategory" />
+          <attribute name="sims_incidenttype" />
+          <attribute name="sims_fieldoffice" />
+          <attribute name="sims_area" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Incidents" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

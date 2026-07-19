@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{6d127385-38ff-4d05-b758-47379a221d14}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{61f9a4a7-cc48-4aa9-9257-3b1ce297c63c}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{224f45df-a9c7-4b2b-a0db-a88d15ffa224}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{42ed5d3f-5824-401a-ba88-83657bc2ce07}">
+                        <labels>
+                          <label description="RoleName" languagecode="1033" />
+                        </labels>
+                        <control id="sims_rolename" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_rolename" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e9e19e4a-e083-4507-ae3b-5bc00217c9e0}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1db15802-dbed-433a-b30f-cc7ebbad65f0}">
+                        <labels>
+                          <label description="RoleKey" languagecode="1033" />
+                        </labels>
+                        <control id="sims_roleidentifier" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_roleidentifier" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{70a44173-5f88-48b4-884e-fb0c509bbb28}">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="sims_roledescription" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_roledescription" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d94897c6-e2fd-4db6-aa56-0d5b896047f3}">
+                        <labels>
+                          <label description="IsSystemRole" languagecode="1033" />
+                        </labels>
+                        <control id="sims_systemroleindicator" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="sims_systemroleindicator" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a715692f-e4e0-4762-8b95-3f684ffa6b93}">
+                        <labels>
+                          <label description="IsActive" languagecode="1033" />
+                        </labels>
+                        <control id="sims_activestatus" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="sims_activestatus" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{1bf76f17-d30f-402e-bee0-64e6416f610e}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_action_id" select="1" icon="1" preview="1">
+        <row name="result" id="sims_roleactionid">
+          <cell name="sims_action_id" width="300" />
+          <cell name="sims_defaultaction" width="150" />
+          <cell name="sims_has_permission" width="150" />
+          <cell name="sims_action" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_roleaction">
+          <attribute name="sims_roleactionid" />
+          <attribute name="sims_action_id" />
+          <attribute name="createdon" />
+          <order attribute="sims_action_id" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sims_defaultaction" />
+          <attribute name="sims_has_permission" />
+          <attribute name="sims_action" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active RoleActions" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

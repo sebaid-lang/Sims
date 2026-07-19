@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{64ef617f-ff1d-f111-8341-6045bdde6611}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_incident_date" select="1" icon="1" preview="1">
+        <row name="result" id="sims_incidentid">
+          <cell name="sims_incident_date" width="200" />
+          <cell name="sims_incidentdate" width="113" />
+          <cell name="sims_reportingdate" width="126" />
+          <cell name="sims_streported" width="112" />
+          <cell name="sims_recordtype" width="112" />
+          <cell name="sims_criticalincident" width="132" />
+          <cell name="sims_riskcategory" width="121" />
+          <cell name="sims_threatcategory" width="132" />
+          <cell name="sims_incidenttype" width="118" />
+          <cell name="sims_incidenttypeother" width="153" />
+          <cell name="sims_ongoing" width="100" />
+          <cell name="sims_summary" width="100" />
+          <cell name="sims_perpetrator" width="103" />
+          <cell name="sims_perpetratorindexnumber" width="187" />
+          <cell name="sims_perpetratornamearabic" width="181" />
+          <cell name="sims_perpetrator_name" width="143" />
+          <cell name="sims_thirdparty" width="105" />
+          <cell name="sims_modusoperandi" width="135" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="sims_incident">
+          <attribute name="sims_incident_date" />
+          <attribute name="sims_incidentid" />
+          <attribute name="sims_incidentdate" />
+          <attribute name="sims_reportingdate" />
+          <attribute name="sims_streported" />
+          <attribute name="sims_recordtype" />
+          <attribute name="sims_criticalincident" />
+          <attribute name="sims_riskcategory" />
+          <attribute name="sims_threatcategory" />
+          <attribute name="sims_incidenttype" />
+          <attribute name="sims_incidenttypeother" />
+          <attribute name="sims_ongoing" />
+          <attribute name="sims_summary" />
+          <attribute name="sims_perpetrator" />
+          <attribute name="sims_perpetratorindexnumber" />
+          <attribute name="sims_perpetratornamearabic" />
+          <attribute name="sims_perpetrator_name" />
+          <attribute name="sims_thirdparty" />
+          <attribute name="sims_modusoperandi" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.24</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="IncidentView" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{604558cc-d0ba-422e-9a9b-5daff3aeb6d1}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_locationcategory" select="1" icon="1" preview="1">
+        <row name="result" id="sims_locationcategoryid">
+          <cell name="sims_locationcategory" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_locationcategory">
+          <attribute name="sims_locationcategoryid" />
+          <attribute name="sims_locationcategory" />
+          <attribute name="createdon" />
+          <order attribute="sims_locationcategory" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="sims_locationcategory" operator="like" value="{0}" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Location Categories" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{548ccefa-c1b4-4043-978c-193a6b178dea}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_specificarea" select="1" icon="1" preview="1">
+        <row name="result" id="sims_specificareaid">
+          <cell name="sims_specificarea" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_specificarea">
+          <attribute name="sims_specificareaid" />
+          <attribute name="sims_specificarea" />
+          <attribute name="createdon" />
+          <order attribute="sims_specificarea" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Specific Areas" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

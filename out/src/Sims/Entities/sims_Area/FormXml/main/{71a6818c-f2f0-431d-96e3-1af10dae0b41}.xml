@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{71a6818c-f2f0-431d-96e3-1af10dae0b41}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{af88dccf-f305-4204-a8cb-0c590f6db577}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{12c06527-892c-4dda-9e90-ddf3f99fe364}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e39d52ef-5c7d-43a6-a3ed-a70137582da4}">
+                        <labels>
+                          <label description="Area" languagecode="1033" />
+                        </labels>
+                        <control id="sims_area" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_area" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{989d4e85-467f-4da5-b477-18627b81d24f}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{527bc461-32c4-4045-b94e-a53796bd847a}">
+                        <labels>
+                          <label description="Field" languagecode="1033" />
+                        </labels>
+                        <control id="sims_field" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_field" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

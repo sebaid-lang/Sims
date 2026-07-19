@@ -1,0 +1,514 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedsharepointonline_9fb7f"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "f3fc673c-87e9-46b6-b296-938db4eb9dcc"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "MyJson",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "email": {
+                  "description": "Enter an email address.",
+                  "format": "email",
+                  "title": "Email",
+                  "type": "string",
+                  "x-ms-content-hint": "EMAIL",
+                  "x-ms-dynamically-added": true
+                },
+                "text_1": {
+                  "description": "Please enter your input",
+                  "title": "varVictimsJSON",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_2": {
+                  "description": "Please enter your input",
+                  "title": "varImpactJSON",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_3": {
+                  "description": "Please enter your input",
+                  "title": "varColAssetsAffectedJSON",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_4": {
+                  "description": "Please enter your input",
+                  "title": "varcolLocationsJSON",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text",
+                "email",
+                "text_1",
+                "text_2",
+                "text_3",
+                "text_4"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Parse_Impact_to_Json": {
+          "runAfter": {
+            "Create_CSV_table_-Victims": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bc2a9801-5bf3-44eb-90cf-b90b2bc4d51e"
+          },
+          "type": "Compose",
+          "inputs": "@json(triggerBody()?['text_2'])"
+        },
+        "Impact_convert_to_array": {
+          "runAfter": {
+            "Parse_Impact_to_Json": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1f7f3451-494f-4813-bb81-bd0190e7cad2"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('Parse_Impact_to_Json')"
+        },
+        "varColAssetsAffectedJSON_convert": {
+          "runAfter": {
+            "convert_to_json": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3464b41b-d30b-4573-8f01-57e6795ccec4"
+          },
+          "type": "Compose",
+          "inputs": "@json(triggerBody()?['text_3'])"
+        },
+        "create_varColAssetsAffected_table": {
+          "runAfter": {
+            "Create_sharing_link_for_a_file_or_folder": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4fc727de-2d13-4733-a7eb-4094b56c0097"
+          },
+          "type": "Table",
+          "inputs": {
+            "from": "@outputs('varColAssetsAffectedJSON_convert_to_array')",
+            "format": "CSV"
+          }
+        },
+        "varColAssetsAffectedJSON_convert_to_array": {
+          "runAfter": {
+            "victim_conver_to_array": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "14257d7a-3b58-4b76-b0f1-c928a7c36da1"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('varColAssetsAffectedJSON_convert')"
+        },
+        "Convert_colLocations_to_JSON": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "e8106483-b5db-409f-9681-ec3d36c550ff"
+          },
+          "type": "Compose",
+          "inputs": "@json(triggerBody()?['text_4'])"
+        },
+        "Create_sharing_link_for_a_file_or_folder": {
+          "runAfter": {
+            "Create_file": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://unrwaorg.sharepoint.com/sites/DSRM-Security-Information-Management-System",
+              "table": "2052e656-1490-47ed-99c0-2ab4a027e727",
+              "id": "@outputs('Create_file')?['body/ItemId']",
+              "permission/type": "edit",
+              "permission/scope": "organization"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "CreateSharingLink",
+              "connectionName": "shared_sharepointonline"
+            }
+          }
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "create_varColAssetsAffected_table": [
+              "Succeeded"
+            ]
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "link": {
+                  "title": "Link",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "link": "@{outputs('Create_sharing_link_for_a_file_or_folder')?['body/link/webUrl']}"
+            }
+          }
+        },
+        "convert_to_json": {
+          "runAfter": {
+            "Convert_colLocations_to_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b75b8d31-76e2-457c-bb50-d5495bec3700"
+          },
+          "type": "Compose",
+          "inputs": "@json(triggerBody()?['text'])"
+        },
+        "Create_CSV_table_AssetsAffected": {
+          "runAfter": {
+            "Create_CSV_table_-_Incident": [
+              "Succeeded"
+            ]
+          },
+          "type": "Table",
+          "inputs": {
+            "from": "@outputs('varColAssetsAffectedJSON_convert_to_array')",
+            "format": "CSV"
+          }
+        },
+        "Create_CSV_table_-_Incident": {
+          "runAfter": {
+            "varColAssetsAffectedJSON_convert_to_array": [
+              "Succeeded"
+            ]
+          },
+          "type": "Table",
+          "inputs": {
+            "from": "@createArray(outputs('convert_to_json'))",
+            "format": "CSV",
+            "columns": [
+              {
+                "header": "Incident_id",
+                "value": "@item()?['Incident_Id']"
+              },
+              {
+                "header": "IncidentDate",
+                "value": "@item()?['IncidentDate']"
+              },
+              {
+                "header": "ReportingDate",
+                "value": "@item()?['ReportingDate']"
+              },
+              {
+                "header": "AdditionalRemarks",
+                "value": "@item()?['AdditionalRemarks']"
+              },
+              {
+                "header": "Department",
+                "value": "@item()?['Department']"
+              },
+              {
+                "header": "IncidentType",
+                "value": "@item()?['IncidentType']"
+              },
+              {
+                "header": "RecordType",
+                "value": "@item()?['RecordType']"
+              },
+              {
+                "header": "Summary",
+                "value": "@item()?['Summary']"
+              },
+              {
+                "header": "ThreatCategory",
+                "value": "@item()?['ThreatCategory']"
+              },
+              {
+                "header": "ForwardIncident",
+                "value": "@item()?['ForwardIncident']"
+              },
+              {
+                "header": "Criticalincident",
+                "value": "@item()?['Criticalincident']"
+              },
+              {
+                "header": "RiskCategory",
+                "value": "@item()?['RiskCategory']"
+              },
+              {
+                "header": "Field",
+                "value": "@item()?['Field']"
+              },
+              {
+                "header": "Area",
+                "value": "@item()?['Area']"
+              },
+              {
+                "header": "Ongoing",
+                "value": "@item()?['Ongoing']"
+              },
+              {
+                "header": "FirstReported",
+                "value": "@item()?['FirstReported']"
+              },
+              {
+                "header": "SecondReported",
+                "value": "@item()?['SecondReported']"
+              },
+              {
+                "header": "Guarding",
+                "value": "@item()?['Guarding']"
+              },
+              {
+                "header": "CCTV",
+                "value": "@item()?['CCTV']"
+              },
+              {
+                "header": "ModusOperandi",
+                "value": "@item()?['ModusOperandi']"
+              },
+              {
+                "header": "IsCritical",
+                "value": "@item()?['IsCritical']"
+              },
+              {
+                "header": "Financialimpact",
+                "value": "@item()?['Financialimpact']"
+              },
+              {
+                "header": "FinancialUSD",
+                "value": "@item()?['FinancialUSD']"
+              },
+              {
+                "header": "FinancialPending",
+                "value": "@item()?['FinancialPending']"
+              },
+              {
+                "header": "IncidentOther",
+                "value": "@item()?['IncidentOther']"
+              },
+              {
+                "header": "InstallationArea",
+                "value": "@item()?['InstallationArea']"
+              },
+              {
+                "header": "InstallationCode",
+                "value": "@item()?['InstallationCode']"
+              },
+              {
+                "header": "LocationType",
+                "value": "@item()?['LocationType']"
+              },
+              {
+                "header": "Lang",
+                "value": "@item()?['Lang']"
+              },
+              {
+                "header": "Lat",
+                "value": "@item()?['Lat']"
+              },
+              {
+                "header": "lang_map",
+                "value": "@item()?['lang_map']"
+              },
+              {
+                "header": "lat_map",
+                "value": "@item()?['lat_map']"
+              },
+              {
+                "header": "Perpetrator",
+                "value": "@item()?['Perpetrator']"
+              },
+              {
+                "header": "Perpetrator_Name",
+                "value": "@item()?['Perpetrator_Name']"
+              },
+              {
+                "header": "Perpetrator_Index_Number",
+                "value": "@item()?['Perpetrator_Index_Number']"
+              },
+              {
+                "header": "ThirdParty",
+                "value": "@item()?['ThirdParty']"
+              }
+            ]
+          }
+        },
+        "Create_CSV_table_locations": {
+          "runAfter": {
+            "Create_CSV_table_AssetsAffected": [
+              "Succeeded"
+            ]
+          },
+          "type": "Table",
+          "inputs": {
+            "from": "@outputs('Convert_colLocations_to_JSON')",
+            "format": "CSV"
+          }
+        },
+        "Create_CSV_table_-Victims": {
+          "runAfter": {
+            "Create_CSV_table_locations": [
+              "Succeeded"
+            ]
+          },
+          "type": "Table",
+          "inputs": {
+            "from": "@outputs('victim_conver_to_array')",
+            "format": "CSV",
+            "columns": [
+              {
+                "header": "victimIndex",
+                "value": "@item()?['victimIndex']"
+              },
+              {
+                "header": "victimName",
+                "value": "@item()?['victimName']"
+              },
+              {
+                "header": "victimNameArabic",
+                "value": "@item()?['victimNameArabic']"
+              },
+              {
+                "header": "gender",
+                "value": "@item()?['gender']"
+              },
+              {
+                "header": "Impact",
+                "value": "@item()?['Impact']"
+              },
+              {
+                "header": "ImpactOther",
+                "value": "@item()?['ImpactOther']"
+              }
+            ]
+          }
+        },
+        "victim_conver_to_array": {
+          "runAfter": {
+            "varColAssetsAffectedJSON_convert": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b601f9e0-e2ad-4953-a74c-d2dcb130c26b"
+          },
+          "type": "Compose",
+          "inputs": "@json(triggerBody()?['text_1'])"
+        },
+        "Create_CSV_table_-_Impact": {
+          "runAfter": {
+            "Impact_convert_to_array": [
+              "Succeeded"
+            ]
+          },
+          "type": "Table",
+          "inputs": {
+            "from": "@outputs('Impact_convert_to_array')",
+            "format": "CSV"
+          }
+        },
+        "Compose": {
+          "runAfter": {
+            "Create_CSV_table_-_Impact": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@concat(    decodeUriComponent('%EF%BB%BF'),\r\n    '--- Incident ---', decodeUriComponent('%0D%0A'),\r\n    body('Create_CSV_table_-_Incident'), decodeUriComponent('%0D%0A%0D%0A'),\r\n    '--- Victims ---', decodeUriComponent('%0D%0A'),\r\n    body('Create_CSV_table_-Victims'), decodeUriComponent('%0D%0A'),\r\n    '--- Impacts ---', decodeUriComponent('%0D%0A'),\r\n\r\n    body('Create_CSV_table_-_Impact'), decodeUriComponent('%0D%0A'),\r\n    '--- Assets Affected ---', decodeUriComponent('%0D%0A'),\r\n    body('Create_CSV_table_AssetsAffected'), decodeUriComponent('%0D%0A'),\r\n    '--- Locations ---', decodeUriComponent('%0D%0A'),\r\n    body('Create_CSV_table_locations')\r\n)"
+        },
+        "Create_file": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "838f24a1-0aba-4a46-9273-68a6ef53fe76"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://unrwaorg.sharepoint.com/sites/DSRM-Security-Information-Management-System",
+              "folderPath": "/Sims3_Export/Sims3_Files/",
+              "name": "Incident_@{formatDateTime(utcNow(),'yyyy-MM-dd_HH-mm-ss')}.csv",
+              "body": "@outputs('Compose')\r\n"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "CreateFile",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

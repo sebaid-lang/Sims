@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{fd0a8e25-f121-4ed5-a154-b5419e0c7c03}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_victimgender" select="1" icon="1" preview="1">
+        <row name="result" id="sims_table1id">
+          <cell name="sims_victimgender" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_table1">
+          <attribute name="sims_table1id" />
+          <attribute name="sims_victimgender" />
+          <attribute name="createdon" />
+          <order attribute="sims_victimgender" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Table1S" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

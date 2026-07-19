@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{aa6eff2f-e240-48be-affc-4707f6568c54}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{142d892c-ce17-42e9-8e39-71d827aa21bd}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{55b85a1f-5873-4e95-b573-c8abc69f203b}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{ce942ad5-54ef-457c-bae7-9889970d7466}">
+                        <labels>
+                          <label description="PermissionKey" languagecode="1033" />
+                        </labels>
+                        <control id="sims_permissionkey" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_permissionkey" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fa53bc0b-d3a4-4b0c-be8e-076e6f864750}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{67ca3eaa-24b4-4b9c-8a7d-3c31e48589a1}">
+                        <labels>
+                          <label description="PermissionName" languagecode="1033" />
+                        </labels>
+                        <control id="sims_permissionname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_permissionname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d6bb4ecb-37d5-40ef-8ed6-fd53ffd3f728}">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="sims_permissiondescription" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_permissiondescription" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5b9f303f-326d-45ad-9c3e-22bf51f417e2}">
+                        <labels>
+                          <label description="Category" languagecode="1033" />
+                        </labels>
+                        <control id="sims_permissioncategory" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="sims_permissioncategory" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{92e2d8bf-89d2-4ed6-9759-1951a40648cd}">
+                        <labels>
+                          <label description="IsActive" languagecode="1033" />
+                        </labels>
+                        <control id="sims_isactive" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="sims_isactive" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

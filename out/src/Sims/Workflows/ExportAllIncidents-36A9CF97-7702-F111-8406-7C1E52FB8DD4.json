@@ -1,0 +1,792 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedsharepointonline_9fb7f"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "63e6b567-5d62-407d-90c2-6b8f9c0c1490"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "varCombinedJSON",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "number": {
+                  "description": "Please enter a number",
+                  "title": "varMaxVictims",
+                  "type": "number",
+                  "x-ms-content-hint": "NUMBER",
+                  "x-ms-dynamically-added": true
+                },
+                "number_1": {
+                  "description": "Please enter a number",
+                  "title": "varMaxImpacts",
+                  "type": "number",
+                  "x-ms-content-hint": "NUMBER",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text",
+                "number",
+                "number_1"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Create_file": {
+          "runAfter": {
+            "Append_to_string_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "72ce82f2-21de-4bff-8766-1f1ca9c74343"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://unrwaorg.sharepoint.com/sites/DSRM-Security-Information-Management-System",
+              "folderPath": "/Sims3_Export/Sims3_Files",
+              "name": "Incident_@{formatDateTime(utcNow(),'yyyy-MM-dd_HH-mm-ss')}.csv",
+              "body": "@variables('CSV_Content')"
+            },
+            "host": {
+              "connectionName": "shared_sharepointonline",
+              "operationId": "CreateFile",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            }
+          },
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        },
+        "Create_sharing_link_for_a_file_or_folder": {
+          "runAfter": {
+            "Create_file": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9c1b0887-47c4-4d17-94d4-f594100ea392"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://unrwaorg.sharepoint.com/sites/DSRM-Security-Information-Management-System",
+              "table": "2052e656-1490-47ed-99c0-2ab4a027e727",
+              "id": "@outputs('Create_file')?['body/ItemId']",
+              "permission/type": "edit",
+              "permission/scope": "organization"
+            },
+            "host": {
+              "connectionName": "shared_sharepointonline",
+              "operationId": "CreateSharingLink",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            }
+          }
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Create_sharing_link_for_a_file_or_folder": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9d6102e1-9db8-4d8d-94eb-0448538f0ca5"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "link": "@{outputs('Create_sharing_link_for_a_file_or_folder')?['body/link/webUrl']}"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "link": {
+                  "title": "link",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Parse_JSON": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "4310c70a-8913-4cb0-96a2-7b220d398d18"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@triggerBody()?['text']",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "AdditionalRemarks": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Area": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "CCTV": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "CreatedOn": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Criticalincident": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "Department": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Export_Timestamp": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Field": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "FinancialPending": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "FinancialUSD": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Financialimpact": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "FirstReported": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ForwardIncident": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Guarding": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Impact_Count": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "Impacts": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Impact": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "IncidentDate": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "IncidentOther": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "IncidentType": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Incident_Id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "InstallationArea": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "InstallationCode": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "IsCritical": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "Latitude": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "LatitudeMap": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "LocationType": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Longitude": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "LongitudeMap": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ModusOperandi": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Ongoing": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "Perpetrator": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Perpetrator_Index_Number": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Perpetrator_Name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "RecordType": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ReportingDate": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "RiskCategory": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "SecondReported": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Summary": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ThirdParty": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ThreatCategory": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "Victim_Count": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "Victims": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Gender": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "Impact_Other": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "Impact_on_Victim": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "Victim_Index_Number": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "Victim_Name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "Victim_Name_Arabic": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "CSV_Content": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d6655d73-67b5-4338-abfe-682955e8eb58"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "CSV_Content",
+                "type": "string",
+                "value": "@{decodeUriComponent('%EF%BB%BF')}Incident_id,IncidentDate,ReportingDate,AdditionalRemarks,Department,IncidentType,Summary,ThreatCategory,RiskCategory"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_3": {
+          "runAfter": {
+            "CSV_Content": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9a97d75f-b946-4c39-b5a5-0671497c5898"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "VictimIndex",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Loop_tp_append_Impact": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "03d8d00a-0833-42b0-bd7a-1f61bc04a651"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "IncidentRow",
+                "type": "string",
+                "value": "@decodeUriComponent('%0D%0A')"
+              }
+            ]
+          }
+        },
+        "Append_to_string_variable_2": {
+          "runAfter": {
+            "Apply_to_each_Incidents": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9c5d6186-0d70-4086-b4d3-175dfc137c1d"
+          },
+          "type": "AppendToStringVariable",
+          "inputs": {
+            "name": "CSV_Content",
+            "value": "@variables('IncidentRow')"
+          }
+        },
+        "MaxVictims": {
+          "runAfter": {
+            "Initialize_variable_3": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ea4475fe-04d0-4697-9c28-557967f17fa9"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "MaxVictims",
+                "type": "integer"
+              }
+            ]
+          }
+        },
+        "Loop_to_append_Victim": {
+          "foreach": "@range(0, variables('MaxVictims'))",
+          "actions": {
+            "Append_to_string_variable_3": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a6895c4a-576e-49f4-bbc3-315b65f3cbd5"
+              },
+              "type": "AppendToStringVariable",
+              "inputs": {
+                "name": "CSV_Content",
+                "value": ",Victim @{add(item(),1)},Impact,ImpactOther,Gender,Index,Name,NameArabic"
+              }
+            }
+          },
+          "runAfter": {
+            "Set_MaxImpacts": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d3d6bb2c-3392-42a3-9cf1-2ebc02d3dd93"
+          },
+          "type": "Foreach"
+        },
+        "Set_variable": {
+          "runAfter": {
+            "MaxVictims": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "84fade37-993b-4b4a-adc8-d9db1dad649c"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "MaxVictims",
+            "value": "@triggerBody()?['number']"
+          }
+        },
+        "Apply_to_each_Incidents": {
+          "foreach": "@reverse( sort(outputs('Parse_JSON')?['body'], 'Victim_Count'))",
+          "actions": {
+            "Append_to_string_variable": {
+              "runAfter": {
+                "Reset_VictimIndex": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "535e02d8-ee12-4d8f-bdca-783a58ea3b0d"
+              },
+              "type": "AppendToStringVariable",
+              "inputs": {
+                "name": "IncidentRow",
+                "value": "@{items('Apply_to_each_Incidents')?['Incident_Id']},@{items('Apply_to_each_Incidents')?['IncidentDate']},@{items('Apply_to_each_Incidents')?['ReportingDate']},@{items('Apply_to_each_Incidents')?['AdditionalRemarks']},@{items('Apply_to_each_Incidents')?['Department']},@{items('Apply_to_each_Incidents')?['IncidentType']},@{items('Apply_to_each_Incidents')?['Summary']},@{items('Apply_to_each_Incidents')?['ThreatCategory']},@{items('Apply_to_each_Incidents')?['RiskCategory']}"
+              }
+            },
+            "Apply_to_each_1": {
+              "foreach": "@items('Apply_to_each_Incidents')?['Victims']",
+              "actions": {
+                "Append_to_string_variable_1": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "09433f11-f551-4549-92c8-fc848ed46429"
+                  },
+                  "type": "AppendToStringVariable",
+                  "inputs": {
+                    "name": "IncidentRow",
+                    "value": ",@{add(variables('VictimIndex'),1)},@{item()?['Impact_on_Victim']},@{item()?['Impact_Other']},@{item()?['Gender']},@{item()?['Victim_Index_Number']\r\n},@{item()?['Victim_Name']},@{item()?['Victim_Name_Arabic']}"
+                  }
+                },
+                "Increment_variable": {
+                  "runAfter": {
+                    "Append_to_string_variable_1": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7279916b-a476-480d-a2a3-792cdb641afd"
+                  },
+                  "type": "IncrementVariable",
+                  "inputs": {
+                    "name": "VictimIndex",
+                    "value": 1
+                  }
+                }
+              },
+              "runAfter": {
+                "Append_to_string_variable": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "43eca3aa-c8af-4dc8-b78f-b45998ee1ebf"
+              },
+              "type": "Foreach"
+            },
+            "Reset_VictimIndex": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "3c7391bf-b976-424a-9d16-85c86d0183e0"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "VictimIndex",
+                "value": 0
+              }
+            },
+            "Append_to_string_variable_4": {
+              "runAfter": {
+                "loop_over_impacts": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1bc44c85-8eb2-47d8-8465-1df656fc7c32"
+              },
+              "type": "AppendToStringVariable",
+              "inputs": {
+                "name": "IncidentRow",
+                "value": "@decodeUriComponent('%0D%0A')"
+              }
+            },
+            "loop_over_impacts": {
+              "foreach": "@items('Apply_to_each_Incidents')?['Impacts']",
+              "actions": {
+                "Append_to_Impact_column": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "33dc90a1-d7d5-450a-a0be-4393fd5b6f68"
+                  },
+                  "type": "AppendToStringVariable",
+                  "inputs": {
+                    "name": "IncidentRow",
+                    "value": ",@{item()?['Impact']}"
+                  }
+                }
+              },
+              "runAfter": {
+                "Apply_to_each_1": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "39043592-0dd1-44e2-8494-71b01bb12ad7"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "893987e9-b97d-4f62-8c03-404276cee01d"
+          },
+          "type": "Foreach"
+        },
+        "MaxImpacts": {
+          "runAfter": {
+            "Set_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2be59988-fd79-4b3e-b62b-972335e21198"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "MaxImpacts",
+                "type": "integer"
+              }
+            ]
+          }
+        },
+        "Set_MaxImpacts": {
+          "runAfter": {
+            "MaxImpacts": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8b158cd8-2337-4e1d-807c-9ef0a9a2cdd1"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "MaxImpacts",
+            "value": "@triggerBody()?['number_1']"
+          }
+        },
+        "Loop_tp_append_Impact": {
+          "foreach": "@range(0, variables('MaxImpacts'))",
+          "actions": {
+            "Append_to_Impact": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "8216f061-3767-4c9d-8ffa-3a5fb2f4e4b8"
+              },
+              "type": "AppendToStringVariable",
+              "inputs": {
+                "name": "CSV_Content",
+                "value": ",Impact@{add(item(),1)}"
+              }
+            }
+          },
+          "runAfter": {
+            "Loop_to_append_Victim": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "26b44e2c-509f-4d08-b51a-c87b5d7ca2be"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

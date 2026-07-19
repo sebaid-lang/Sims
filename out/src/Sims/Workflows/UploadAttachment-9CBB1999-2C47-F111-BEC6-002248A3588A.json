@@ -1,0 +1,140 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedsharepointonline_9fb7f"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "b82bf4b3-39ca-4ed1-8db2-0eac5b8560fd"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "file": {
+                  "title": "IncidentFile",
+                  "type": "object",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please select file or image",
+                  "x-ms-content-hint": "FILE",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "contentBytes": {
+                      "type": "string",
+                      "format": "byte"
+                    }
+                  }
+                }
+              },
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Create_file": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "03002ac1-834f-49f2-b918-36051ec81670"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://unrwaorg.sharepoint.com/sites/DSRM-Security-Information-Management-System",
+              "folderPath": "/Attachment",
+              "name": "@triggerBody()?['file']?['name']",
+              "body": "@triggerBody()?['file']?['contentBytes']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "CreateFile",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Create_sharing_link_for_a_file_or_folder": [
+              "Succeeded"
+            ]
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fileurl": {
+                  "title": "fileurl",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "fileurl": "@{outputs('Create_sharing_link_for_a_file_or_folder')?['body/link/webUrl']}"
+            }
+          }
+        },
+        "Create_sharing_link_for_a_file_or_folder": {
+          "runAfter": {
+            "Create_file": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://unrwaorg.sharepoint.com/sites/DSRM-Security-Information-Management-System",
+              "table": "5755a06e-38eb-47a2-8e53-008491b98ea9",
+              "id": "@outputs('Create_file')?['body/ItemId']",
+              "permission/type": "edit",
+              "permission/scope": "organization"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "CreateSharingLink",
+              "connectionName": "shared_sharepointonline"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{a33b77c2-bd4a-4068-b439-d9f69b770a2c}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{d1a18c6f-d47d-4c3b-86f5-52a2d5465f9c}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{f9723704-1eb7-436d-8471-76dfeb2cf598}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{4527b953-8c7e-4a4a-9b1a-c65269bb0aa1}">
+                        <labels>
+                          <label description="Impact Type" languagecode="1033" />
+                        </labels>
+                        <control id="sims_newcolumn" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_newcolumn" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{375511b9-ee7f-4c48-b3bc-43c38640a7bb}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fb483ef8-9c09-487e-8300-33b936c70ee3}">
+                        <labels>
+                          <label description="Impact (Assets)" languagecode="1033" />
+                        </labels>
+                        <control id="sims_impactassets" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_impactassets" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

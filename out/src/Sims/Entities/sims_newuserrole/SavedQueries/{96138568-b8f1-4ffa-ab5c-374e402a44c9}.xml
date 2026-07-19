@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{96138568-b8f1-4ffa-ab5c-374e402a44c9}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_id" select="1" icon="1" preview="1">
+        <row name="result" id="sims_newuserroleid">
+          <cell name="sims_id" width="300" />
+          <cell name="sims_description" width="150" />
+          <cell name="sims_isactive" width="150" />
+          <cell name="sims_issystemrole" width="150" />
+          <cell name="sims_rolekey" width="150" />
+          <cell name="sims_rolename" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_newuserrole">
+          <attribute name="sims_newuserroleid" />
+          <attribute name="sims_id" />
+          <attribute name="createdon" />
+          <order attribute="sims_id" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sims_description" />
+          <attribute name="sims_isactive" />
+          <attribute name="sims_issystemrole" />
+          <attribute name="sims_rolekey" />
+          <attribute name="sims_rolename" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active newuserroles" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

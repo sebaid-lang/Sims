@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{cdeef06d-f7ef-44d3-bf77-0b980f5ffeae}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{9c56265b-83ca-4752-a25e-4d5f4b20aac3}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{baeef403-fd4d-4943-a2ee-913211f20b35}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{f3ce3371-6235-4fb7-b195-c0c28a7cdff6}">
+                        <labels>
+                          <label description="RoleID" languagecode="1033" />
+                        </labels>
+                        <control id="sims_roleid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_roleid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ff15eaec-9982-448f-9369-e3572f5e0632}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{37a5f282-b3ba-4ed3-9d6e-2511c03059f0}">
+                        <labels>
+                          <label description="RoleDescription" languagecode="1033" />
+                        </labels>
+                        <control id="sims_roledescription" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_roledescription" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

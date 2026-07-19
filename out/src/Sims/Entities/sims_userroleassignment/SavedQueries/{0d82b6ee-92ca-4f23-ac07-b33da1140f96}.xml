@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{0d82b6ee-92ca-4f23-ac07-b33da1140f96}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_userdisplayname" select="1" icon="1" preview="1">
+        <row name="result" id="sims_userroleassignmentid">
+          <cell name="sims_userdisplayname" width="300" />
+          <cell name="sims_useremail" width="150" />
+          <cell name="sims_userrole" width="150" />
+          <cell name="sims_assignmentdate" width="150" />
+          <cell name="sims_assignedby" width="150" />
+          <cell name="sims_roleexpirydate" width="150" />
+          <cell name="sims_isactive" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_userroleassignment">
+          <attribute name="sims_userroleassignmentid" />
+          <attribute name="sims_userdisplayname" />
+          <attribute name="createdon" />
+          <order attribute="sims_userdisplayname" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sims_useremail" />
+          <attribute name="sims_userrole" />
+          <attribute name="sims_assignmentdate" />
+          <attribute name="sims_assignedby" />
+          <attribute name="sims_roleexpirydate" />
+          <attribute name="sims_isactive" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active User Role Assignment" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

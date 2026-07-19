@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{6ad06210-9a8f-4bba-9c3e-462b37a8bcf8}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_id" select="1" icon="1" preview="1">
+        <row name="result" id="sims_impactincidentsid">
+          <cell name="sims_id" width="300" />
+          <cell name="sims_impact" width="150" />
+          <cell name="sims_incident" width="150" />
+          <cell name="a_906af4b138f6453fa3511713910145a0.sims_area" width="126" />
+          <cell name="a_906af4b138f6453fa3511713910145a0.sims_installationname" width="199" />
+          <cell name="a_007da38c71c8440187dcda545905482b.sims_newcolumn" width="164" />
+          <cell name="a_906af4b138f6453fa3511713910145a0.sims_installationarea" width="193" />
+          <cell name="a_007da38c71c8440187dcda545905482b.sims_impactassets" width="180" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_impactincidents">
+          <attribute name="sims_impactincidentsid" />
+          <attribute name="sims_id" />
+          <attribute name="createdon" />
+          <order attribute="sims_id" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sims_impact" />
+          <attribute name="sims_incident" />
+          <link-entity alias="a_007da38c71c8440187dcda545905482b" name="sims_unassetsaffectedimpactassets" to="sims_impact" from="sims_unassetsaffectedimpactassetsid" link-type="outer" visible="false">
+            <attribute name="sims_newcolumn" />
+            <attribute name="sims_impactassets" />
+          </link-entity>
+          <link-entity alias="a_906af4b138f6453fa3511713910145a0" name="sims_incident" to="sims_incident" from="sims_incidentid" link-type="outer" visible="false">
+            <attribute name="sims_area" />
+            <attribute name="sims_installationarea" />
+            <attribute name="sims_installationname" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Impact Incidents" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

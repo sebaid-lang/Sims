@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{9cf07e1a-a5cc-4ca3-8e1a-843a5e6b5592}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{6b300e4b-4421-45da-a0d8-018ababffe83}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{89e954d2-67b2-4cd7-a18c-70a194957c47}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{7cfcf2fd-4943-40e5-9cba-ef40f75bb717}">
+                        <labels>
+                          <label description="UserDisplayName" languagecode="1033" />
+                        </labels>
+                        <control id="sims_userdisplayname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_userdisplayname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{edf61d52-9692-4d01-bd40-0e08981ae364}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{aa046bc4-664f-40d6-ad17-54bcf086a794}">
+                        <labels>
+                          <label description="UserEmail" languagecode="1033" />
+                        </labels>
+                        <control id="sims_useremail" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_useremail" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ee92752e-7222-4686-a3c0-a066da74f3fa}">
+                        <labels>
+                          <label description="Permission" languagecode="1033" />
+                        </labels>
+                        <control id="sims_permissiontype" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_permissiontype" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5321952d-cf84-464c-bf31-8f144123de8f}">
+                        <labels>
+                          <label description="Reason" languagecode="1033" />
+                        </labels>
+                        <control id="sims_permissionreason" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_permissionreason" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ba811f5f-6a2b-40c4-8396-55bd591a254d}">
+                        <labels>
+                          <label description="AssignedOn" languagecode="1033" />
+                        </labels>
+                        <control id="sims_assignmentdate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="sims_assignmentdate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0943ec34-daa3-4814-bac8-f739dc2d0db9}">
+                        <labels>
+                          <label description="AssignedBy" languagecode="1033" />
+                        </labels>
+                        <control id="sims_assignedby" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_assignedby" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{054e96ed-7348-4d36-b7e7-72538f094217}">
+                        <labels>
+                          <label description="ExpiryDate" languagecode="1033" />
+                        </labels>
+                        <control id="sims_expirydate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="sims_expirydate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{13f2d3b5-fca3-4830-af25-f93cd9e4b151}">
+                        <labels>
+                          <label description="IsActive" languagecode="1033" />
+                        </labels>
+                        <control id="sims_isactive" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="sims_isactive" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{f55bb0f4-4aa8-4267-8ba0-40962c724100}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{4a5ca3d7-ab53-41cc-bdd0-ac8617aff11a}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{c309bfbc-6003-4c4a-8b80-ac5facf19744}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{c84a3b80-62b3-40d2-a6bf-f4567f630c6f}">
+                        <labels>
+                          <label description="InstallationID" languagecode="1033" />
+                        </labels>
+                        <control id="sims_installationid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sims_installationid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0855ac6d-d258-4944-9f5b-5da0ee10f814}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8a69efc3-4717-4e37-ae64-b1d94c11cdb6}">
+                        <labels>
+                          <label description="Premises ID " languagecode="1033" />
+                        </labels>
+                        <control id="sims_premisesid" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_premisesid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e52fbf2a-5433-486b-9cda-c451724e5740}">
+                        <labels>
+                          <label description="Installation Name" languagecode="1033" />
+                        </labels>
+                        <control id="sims_installationname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_installationname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{534e5419-1ae3-467f-b9d4-6bf78f602281}">
+                        <labels>
+                          <label description="Area" languagecode="1033" />
+                        </labels>
+                        <control id="sims_area" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_area" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{876f8490-11d3-43ff-aa15-b120c20ecd63}">
+                        <labels>
+                          <label description="Latitude" languagecode="1033" />
+                        </labels>
+                        <control id="sims_latitude" classid="{0d2c745a-e5a8-4c8f-ba63-c6d3bb604660}" datafieldname="sims_latitude" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{62d47f57-2dc0-4be6-b442-3779d2ffb100}">
+                        <labels>
+                          <label description="Longitude" languagecode="1033" />
+                        </labels>
+                        <control id="sims_longitude" classid="{0d2c745a-e5a8-4c8f-ba63-c6d3bb604660}" datafieldname="sims_longitude" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ba5393ce-960d-439f-81a8-792fec0d54b3}">
+                        <labels>
+                          <label description="Field Office" languagecode="1033" />
+                        </labels>
+                        <control id="sims_fieldoffice" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="sims_fieldoffice" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{be1a93ce-c394-44f0-b37f-04c47ed0eb6a}">
+                        <labels>
+                          <label description="Last inspected date" languagecode="1033" />
+                        </labels>
+                        <control id="sims_lastinspecteddate" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="sims_lastinspecteddate" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

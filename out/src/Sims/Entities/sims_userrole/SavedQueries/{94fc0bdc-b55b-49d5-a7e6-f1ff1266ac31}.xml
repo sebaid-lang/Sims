@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{94fc0bdc-b55b-49d5-a7e6-f1ff1266ac31}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_rolename" select="1" icon="1" preview="1">
+        <row name="result" id="sims_userroleid">
+          <cell name="sims_rolename" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_userrole">
+          <attribute name="sims_userroleid" />
+          <attribute name="sims_rolename" />
+          <attribute name="createdon" />
+          <order attribute="sims_rolename" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="User Role Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

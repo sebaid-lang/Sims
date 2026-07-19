@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{953c9988-5da9-4c31-9aeb-f6440d43552f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_action_id" select="1" icon="1" preview="1">
+        <row name="result" id="sims_actionsid">
+          <cell name="sims_action_id" width="300" />
+          <cell name="sims_action_name" width="150" />
+          <cell name="sims_action_description" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_actions">
+          <attribute name="sims_actionsid" />
+          <attribute name="sims_action_id" />
+          <attribute name="createdon" />
+          <order attribute="sims_action_id" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sims_action_name" />
+          <attribute name="sims_action_description" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Actions" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

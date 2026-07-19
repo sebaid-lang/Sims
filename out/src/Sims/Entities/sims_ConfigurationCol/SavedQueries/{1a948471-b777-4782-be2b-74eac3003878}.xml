@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{1a948471-b777-4782-be2b-74eac3003878}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sims_name" select="1" icon="1" preview="1">
+        <row name="result" id="sims_configurationcolid">
+          <cell name="sims_name" width="300" />
+          <cell name="sims_listdescription" width="150" />
+          <cell name="sims_listname" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sims_configurationcol">
+          <attribute name="sims_configurationcolid" />
+          <attribute name="sims_name" />
+          <attribute name="createdon" />
+          <order attribute="sims_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sims_listdescription" />
+          <attribute name="sims_listname" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active ConfigurationCols" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
