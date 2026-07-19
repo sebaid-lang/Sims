@@ -22,7 +22,7 @@ jobs:
         uses: microsoft/powerplatform-actions/actions-install@v1.9.2
 
       - name: Publish customizations
-        uses: microsoft/powerplatform-actions/publish-customizations@v1.9.2
+        uses: microsoft/powerplatform-actions/publish-solution@v1.9.2
         with:
           environment-url: ${{ secrets.POWERPLATFORM_DEV_URL }}
           app-id: ${{ secrets.POWERPLATFORM_CLIENT_ID }}
