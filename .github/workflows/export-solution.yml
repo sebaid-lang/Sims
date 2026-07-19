@@ -7,7 +7,7 @@ on:
       solution_name:
         description: 'Solution unique name'
         required: true
-        default: 'SimsSolution'
+        default: 'Sims'
 
 jobs:
   export-unpack:
