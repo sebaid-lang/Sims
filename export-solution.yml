@@ -1,0 +1,52 @@
+name: Export and Unpack Solution
+
+on:
+  workflow_dispatch:
+    inputs:
+      solution_name:
+        description: 'Solution unique name'
+        required: true
+        default: 'SimsSolution'
+
+jobs:
+  export-unpack:
+    runs-on: windows-latest
+    environment: dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Power Platform tools
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Publish customizations
+        uses: microsoft/powerplatform-actions/publish-customizations@v1
+        with:
+          environment-url: ${{ secrets.POWERPLATFORM_DEV_URL }}
+          app-id: ${{ secrets.POWERPLATFORM_CLIENT_ID }}
+          client-secret: ${{ secrets.POWERPLATFORM_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.POWERPLATFORM_TENANT_ID }}
+
+      - name: Export solution (unmanaged)
+        uses: microsoft/powerplatform-actions/export-solution@v1
+        with:
+          environment-url: ${{ secrets.POWERPLATFORM_DEV_URL }}
+          app-id: ${{ secrets.POWERPLATFORM_CLIENT_ID }}
+          client-secret: ${{ secrets.POWERPLATFORM_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.POWERPLATFORM_TENANT_ID }}
+          solution-name: ${{ github.event.inputs.solution_name }}
+          solution-output-file: out/exported/${{ github.event.inputs.solution_name }}.zip
+
+      - name: Unpack solution to source
+        uses: microsoft/powerplatform-actions/unpack-solution@v1
+        with:
+          solution-file: out/exported/${{ github.event.inputs.solution_name }}.zip
+          solution-folder: out/src/${{ github.event.inputs.solution_name }}
+          solution-type: Both
+
+      - name: Commit unpacked solution
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add out/src
+          git commit -m "Export and unpack solution" || echo "No changes"
+          git push
