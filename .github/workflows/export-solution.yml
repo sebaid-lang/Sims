@@ -3,10 +3,6 @@ name: Export and Unpack Solution
 permissions:
   contents: write
 
-concurrency:
-  group: export-${{ github.event.inputs.solution_name }}
-  cancel-in-progress: false
-
 on:
   workflow_dispatch:
     inputs:
@@ -43,18 +39,16 @@ jobs:
           solution-name: ${{ github.event.inputs.solution_name }}
           solution-output-file: out/exported/${{ github.event.inputs.solution_name }}.zip
 
+      - name: Auth for Checker
+        run: |
+          pac auth create --url "${{ secrets.POWERPLATFORM_DEV_URL }}" --applicationId "${{ secrets.POWERPLATFORM_CLIENT_ID }}" --clientSecret "${{ secrets.POWERPLATFORM_CLIENT_SECRET }}" --tenant "${{ secrets.POWERPLATFORM_TENANT_ID }}"
+        shell: pwsh
+
       - name: Run Solution Checker
         continue-on-error: true
-        uses: microsoft/powerplatform-actions/checker-run@v1.9.2
-        with:
-          environment-url: ${{ secrets.POWERPLATFORM_DEV_URL }}
-          app-id: ${{ secrets.POWERPLATFORM_CLIENT_ID }}
-          client-secret: ${{ secrets.POWERPLATFORM_CLIENT_SECRET }}
-          tenant-id: ${{ secrets.POWERPLATFORM_TENANT_ID }}
-          path: out/exported/${{ github.event.inputs.solution_name }}.zip
-          geo: 'Europe'
-          ruleset: 'AppSource Certification'
-          output-directory: out/checker-results
+        run: |
+          pac solution check --path out/exported/${{ github.event.inputs.solution_name }}.zip --geo Europe --outputDirectory out/checker-results
+        shell: pwsh
 
       - name: Unpack solution to source
         uses: microsoft/powerplatform-actions/unpack-solution@v1.9.2
@@ -63,32 +57,17 @@ jobs:
           solution-folder: out/src/${{ github.event.inputs.solution_name }}
           solution-type: Unmanaged
 
-      - name: Generate version tag
-        id: version
-        shell: pwsh
-        run: |
-          $date = Get-Date -Format "yyyyMMdd"
-          $run = "${{ github.run_number }}"
-          echo "version=$date.$run" >> $env:GITHUB_OUTPUT
-
       - name: Commit unpacked solution
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add out/src
-          git commit -m "Export solution v${{ steps.version.outputs.version }}" || echo "No changes"
+          git commit -m "Export and unpack solution" || echo "No changes"
           git push
 
       - name: Upload Checker Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: solution-checker-results-${{ steps.version.outputs.version }}
+          name: solution-checker-results
           path: out/checker-results
-
-      - name: Upload exported solution zip
-        uses: actions/upload-artifact@v4
-        with:
-          name: exported-solution-${{ steps.version.outputs.version }}
-          path: out/exported/*.zip
-          retention-days: 30
