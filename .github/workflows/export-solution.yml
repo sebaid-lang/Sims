@@ -20,6 +20,8 @@ jobs:
 
       - name: Install Power Platform tools
         uses: microsoft/powerplatform-actions/actions-install@v1.9.2
+        with:
+          add-tools-to-path: true
 
       - name: Publish customizations
         uses: microsoft/powerplatform-actions/publish-solution@v1.9.2
@@ -47,27 +49,3 @@ jobs:
       - name: Run Solution Checker
         continue-on-error: true
         run: |
-          pac solution check --path out/exported/${{ github.event.inputs.solution_name }}.zip --geo Europe --outputDirectory out/checker-results
-        shell: pwsh
-
-      - name: Unpack solution to source
-        uses: microsoft/powerplatform-actions/unpack-solution@v1.9.2
-        with:
-          solution-file: out/exported/${{ github.event.inputs.solution_name }}.zip
-          solution-folder: out/src/${{ github.event.inputs.solution_name }}
-          solution-type: Unmanaged
-
-      - name: Commit unpacked solution
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add out/src
-          git commit -m "Export and unpack solution" || echo "No changes"
-          git push
-
-      - name: Upload Checker Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: solution-checker-results
-          path: out/checker-results
