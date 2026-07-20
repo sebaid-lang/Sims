@@ -62,6 +62,7 @@ jobs:
           solution-file: out/exported/${{ github.event.inputs.solution_name }}.zip
           solution-folder: out/src/${{ github.event.inputs.solution_name }}
           solution-type: Unmanaged
+          process-canvas-apps: true
 
       - name: Generate version tag
         id: version
